@@ -1,0 +1,32 @@
+.form-signin {
+    margin: 70px auto;
+    width: 100%;
+    max-width: 370px;
+    background-color: aliceblue;
+}
+
+.search {
+    border: 1px solid gainsboro;
+}
+
+.kind {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+.box{
+    display: none;
+    position: absolute;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: -30px -40px;
+
+    background-color: white;
+    width: 450px;
+    height: 500px;
+
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="all.css">
+    <title>Document</title>
+</head>
+
+<body style="background-color:antiquewhite;">
+    <div class="bag" id="test">
+        <div class="form-signin search p-3">
+            <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                <li class="nav-item " role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-home" type="button" role="tab">查詢</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-contact" type="button" role="tab">註冊</button>
+                </li>
+            </ul>
+            <div class="tab-content " id="pills-tabContent ">
+                <div class="tab-pane fade show active " id="pills-home" role="tabpanel"
+                    aria-labelledby="pills-home-tab">
+                    <form class="login_reset justify-content-center">
+                        <div class="row mb-3">
+                            <label class="col-sm-12 col-form-label ">身分證字號：</label>
+                            <br>
+                            <div class="col-sm-12 ">
+                                <input type="text" placeholder="請輸入身分證字號" v-model="login" class="form-control"
+                                    maxlength=10>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <div class="d-grid gap-2">
+                                <input class="btn btn-warning mb-3 " type="button" value="查詢" id="select"
+                                    @click="member_select">
+                            </div>
+                        </div>
+                        <div class="box container">
+
+
+
+
+                            <fieldset disabled>
+                                <label for="disabledTextInput" class="mt-5">會員帳號:</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="Disabled input" name="userID">
+                            </fieldset>
+                            <br>
+                            <label for="memberName">姓名:</label>
+                            <input type="text" class="form-control" id="memberName" placeholder="輸入姓名" name="userName">
+                            <br>
+                            <label for="memberStatus">是否施打過疫苗:</label>
+                            <input type="text" class="form-control" id="memberStatus" placeholder="輸入姓名"
+                                name="userName">
+                            <br>
+                            <label for="memberKind">施打的疫苗種類:</label>
+                            <input type="text" class="form-control mb-5" id="memberKind" placeholder="輸入姓名"
+                                name="userName">
+
+
+                            <button type="button" class="btn btn-secondary" id="close">Close</button>
+                            <button type="submit" class="btn btn-primary" id="memberSubmit">Update</button>
+
+                        </div>
+                        <!-- Modal -->
+                        <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">詳細資料</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <fieldset disabled>
+                                            <label for="disabledTextInput">會員帳號:</label>
+                                            <input type="text" id="disabledTextInput" class="form-control"
+                                                placeholder="Disabled input" name="userID">
+                                        </fieldset>
+                                        <br>
+                                        <label for="memberName">姓名:</label>
+                                        <input type="text" class="form-control" id="memberName" placeholder="輸入姓名"
+                                            name="userName">
+                                        <br>
+                                        <label for="memberStatus">是否施打過疫苗:</label>
+                                        <input type="text" class="form-control" id="memberStatus"
+                                            placeholder="輸入姓名" name="userName">
+                                        <br>
+                                        <label for="memberKind">施打的疫苗種類:</label>
+                                        <input type="text" class="form-control" id="memberKind"
+                                            placeholder="輸入姓名" name="userName">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal" id="close">Close</button>
+                                            <button type="submit" class="btn btn-primary" id="memberSubmit">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <form class="justify-content-center reset">
+                        <label class="col-sm-12 col-form-label ">身份證字號：</label>
+                        <br>
+                        <div class="col-sm-12 ">
+                            <input type="text" name="text" placeholder="請輸入身份證字號" class="mb-2 form-control" maxlength=10
+                                required="required" v-model="id" />
+                        </div>
+                        <label class="col-sm-12 col-form-label ">姓名：</label>
+                        <br>
+                        <div class="col-sm-12 ">
+                            <input type="text" name="text" placeholder="請輸入姓名" class="mb-2 form-control" maxlength=5
+                                required="required" v-model="name" />
+                        </div>
+                        <label class="col-sm-12 col-form-label ">是否施打過疫苗：<br></label>
+                        <label>
+                            <input type="radio" required="required" class="mb-4" name="isTrue" value="是" id="yes"
+                                v-model="isTrue">是</label>
+                        <label><input type="radio" required="required" class="mb-4" name="isTrue" value="否"
+                                v-model="isTrue" id="no">否</label>
+                        <div class="kind">
+                            <label class="col-sm-12 col-form-label ">施打的疫苗種類：</label>
+                            <br>
+                            <label>
+                                <input type="checkbox" class="mb-4" name="kind" value="AZ" v-model="kind1">AZ</label>
+                            <label><input type="checkbox" class="mb-4" name="kind" value="BNT"
+                                    v-model="kind2">BNT</label>
+                            <label><input type="checkbox" class="mb-4" name="kind" value="高端" v-model="kind3">高端</label>
+                            <label><input type="checkbox" class="mb-4" name="kind" value="Moderna"
+                                    v-model="kind4">Moderna</label>
+                        </div>
+                        <br>
+                        <div class="d-grid gap-2">
+                            <input class="btn btn-warning " type="button" value="註冊" @click="new_member">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="all.js"></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data() {
+                return {
+                    id: '',
+                    name: '',
+                    isTrue: '',
+                    kind1: '',
+                    kind2: '',
+                    kind3: '',
+                    kind4: '',
+                    login: '',
+                }
+            },
+            methods: {
+                member_select() {
+                    if (this.login != '') {
+                        if (this.login.length != 10) {
+                            loginMember('<strong>請輸入正確身分證</strong>', 'error')
+                        } else {
+                            fetch("./search.php", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    'Accept': 'application/json'
+                                },
+                                mode: "cors",
+                                body: JSON.stringify({
+                                    login: this.login,
+                                }),
+                            })
+                                .then(resp => resp.json())
+                                .then((body) => {
+                                    const { successful } = body;
+                                    let status = { id: '' };
+                                    // console.log(status);
+                                    if (successful) {
+                                        loginMember('<strong>登入成功</strong>', 'success')    
+                                        let login_reset = document.querySelector(".login_reset")
+                                        login_reset.reset();
+                                        sessionStorage.setItem('status', JSON.stringify(body));
+                                    } else {
+                                        loginMember('<strong>登入失敗</strong>', 'error');
+                                        sessionStorage.setItem('status', false);
+                                    }
+                                });
+                        }
+                    } else {
+                        loginMember('<strong>請填寫完欄位再送出</strong>', 'error')
+                    }
+                },
+                new_member() {
+                    if (this.id != '' && this.name != '') {
+                        if (this.id.length != 10) {
+                            loginMember('<strong>請輸入正確身分證</strong>', 'error')
+                        } else if (this.name.length > 5 || this.name.length < 2) {
+                            loginMember('<strong>請輸入全名</strong>', 'error')
+                        } else {
+                            fetch("./member.php", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    'Accept': 'application/json'
+                                },
+                                mode: "cors",
+                                body: JSON.stringify({
+                                    id: this.id,
+                                    name: this.name,
+                                    isTrue: this.isTrue,
+                                    kind1: this.kind1,
+                                    kind2: this.kind2,
+                                    kind3: this.kind3,
+                                    kind4: this.kind4
+                                }),
+                            })
+                                .then(resp => resp)
+                                .then((body) => {
+                                    loginMember("<strong>註冊成功</strong>", 'success', '<button class="btn btn-warning m-3"><a href="./index.html" style="color: #fff">前往查詢</a></button> ')
+                                    let reset = document.querySelector(".reset")
+                                    reset.reset()
+                                });
+                        }
+                    } else {
+                        loginMember('<strong>請填寫完所有欄位再送出</strong>', 'error')
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
