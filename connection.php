@@ -24,4 +24,3 @@ try {
 } catch (PDOException $e) {
     // echo "連接失敗: " . $e->getMessage();
 }
-?>

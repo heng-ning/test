@@ -29,9 +29,9 @@
                         data-bs-target="#pills-contact" type="button" role="tab">註冊</button>
                 </li>
             </ul>
+            <!-- 查詢 -->
             <div class="tab-content " id="pills-tabContent ">
-                <div class="tab-pane fade show active " id="pills-home" role="tabpanel"
-                    aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade show active " id="pills-home" role="tabpanel">
                     <form class="login_reset justify-content-center">
                         <div class="row mb-3">
                             <label class="col-sm-12 col-form-label ">身分證字號：</label>
@@ -47,11 +47,8 @@
                                     @click="member_select">
                             </div>
                         </div>
+                        <!-- 查詢燈箱 -->
                         <div class="box container">
-
-
-
-
                             <fieldset disabled>
                                 <label for="disabledTextInput" class="mt-5">會員帳號:</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
@@ -68,49 +65,13 @@
                             <label for="memberKind">施打的疫苗種類:</label>
                             <input type="text" class="form-control mb-5" id="memberKind" placeholder="輸入姓名"
                                 name="userName">
-
-
                             <button type="button" class="btn btn-secondary" id="close">Close</button>
                             <button type="submit" class="btn btn-primary" id="memberSubmit">Update</button>
-
                         </div>
-                        <!-- Modal -->
-                        <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" style="display: none;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">詳細資料</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <fieldset disabled>
-                                            <label for="disabledTextInput">會員帳號:</label>
-                                            <input type="text" id="disabledTextInput" class="form-control"
-                                                placeholder="Disabled input" name="userID">
-                                        </fieldset>
-                                        <br>
-                                        <label for="memberName">姓名:</label>
-                                        <input type="text" class="form-control" id="memberName" placeholder="輸入姓名"
-                                            name="userName">
-                                        <br>
-                                        <label for="memberStatus">是否施打過疫苗:</label>
-                                        <input type="text" class="form-control" id="memberStatus"
-                                            placeholder="輸入姓名" name="userName">
-                                        <br>
-                                        <label for="memberKind">施打的疫苗種類:</label>
-                                        <input type="text" class="form-control" id="memberKind"
-                                            placeholder="輸入姓名" name="userName">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal" id="close">Close</button>
-                                            <button type="submit" class="btn btn-primary" id="memberSubmit">Update</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </form>
                 </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <!-- 註冊 -->
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel">
                     <form class="justify-content-center reset">
                         <label class="col-sm-12 col-form-label ">身份證字號：</label>
                         <br>
@@ -168,6 +129,7 @@
                 }
             },
             methods: {
+                // 查詢
                 member_select() {
                     if (this.login != '') {
                         if (this.login.length != 10) {
@@ -190,7 +152,7 @@
                                     let status = { id: '' };
                                     // console.log(status);
                                     if (successful) {
-                                        loginMember('<strong>登入成功</strong>', 'success')    
+                                        loginMember('<strong>登入成功</strong>', 'success')
                                         let login_reset = document.querySelector(".login_reset")
                                         login_reset.reset();
                                         sessionStorage.setItem('status', JSON.stringify(body));
@@ -204,6 +166,7 @@
                         loginMember('<strong>請填寫完欄位再送出</strong>', 'error')
                     }
                 },
+                // 註冊
                 new_member() {
                     if (this.id != '' && this.name != '') {
                         if (this.id.length != 10) {

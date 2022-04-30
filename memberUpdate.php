@@ -25,7 +25,6 @@ $statement->bindValue(":name", $member->name);
 $statement->bindValue(":status", $member->status);
 $statement->bindValue(":kind", $member->kind);
 
-
 //抓出全部且依照順序封裝成一個二維陣列
 $data = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -42,5 +41,3 @@ $mem["message"] = $result_count != 0 ? "更新成功" : "更新錯誤，請聯�
 // echo ($mem["message"]);
 
 echo json_encode($mem["message"]);
-
-?>

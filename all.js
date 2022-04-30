@@ -1,3 +1,4 @@
+// 彈窗套件
 function loginMember(msg, icon, html) {
     Swal.fire({
         title: msg,
@@ -17,34 +18,29 @@ function loginMember(msg, icon, html) {
     })
 }
 
-// 點擊有施打疫苗即顯示種類; 無不顯示
+// 註冊頁面點擊有施打疫苗即顯示種類; 無不顯示
 $(document).ready(function () {
     $("#yes").click(function () {
         $(".kind").css("display", "block")
     });
     $("#no").click(function () {
         $(".kind").css("display", "none")
-
     })
-
 })
-
 
 // 登入成功 跳出燈箱
 let result = JSON.parse(sessionStorage.getItem('status'));
-console.log(result.successful);
-
+// console.log(result.successful);
 $(document).ready(function () {
-    
-    $("#select").on('click', function(){
+    $("#select").on('click', function () {
         console.log(result);
-        if(result == null){
+        if (result == null) {
             $(".box").css("display", "none")
-        }else{
+        } else {
             $(".box").css("display", "block");
         }
     })
-    
+
     // 燈箱 close 即移除資料 
     $("#close").click(function () {
         // e.preventDefault();
@@ -55,7 +51,7 @@ $(document).ready(function () {
 })
 
 
-// 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
+// 使用jQuery Ajax 連結資料庫到燈箱
 $(document).ready(function () {
     // let result = JSON.parse(sessionStorage.getItem('status'));
     fetch('./select.php', {

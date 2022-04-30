@@ -20,5 +20,3 @@ $statement->bindValue(":kind", $member["kind"]);
  //執行
 $statement->execute();
 echo "新增成功!";
-
-?>
